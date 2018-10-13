@@ -1,4 +1,4 @@
-root:!*:17512:0:99999:7:::
+root:$6$qxynVYpL$NE4kJDqtL..fgkIW5B8YjS5qJzGZdpDviJAb3jQtmpPjJNe/jQwW4mSOuuuDra33yC6AsMe2ICrRBws7eMFUE1:17816:0:99999:7:::
 daemon:*:17512:0:99999:7:::
 bin:*:17512:0:99999:7:::
 sys:*:17512:0:99999:7:::
