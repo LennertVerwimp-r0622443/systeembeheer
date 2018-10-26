@@ -4,7 +4,7 @@
 
 zone "lennert-verwimp.sb.uclllabs.be" {
     type master;
-    file "/etc/bind/db.lennert-verwimp.sb.uclllabs.be";
+    file "/etc/bind/lennert-verwimp.sb.uclllabs.be";
     notify yes;
 	allow-transfer{
 	//mrt

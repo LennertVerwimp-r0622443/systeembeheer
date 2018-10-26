@@ -2,8 +2,8 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	lennert-verwimp.sb.uclllabs.be. root.lennert-verwimp.sb.uclllabs.be. (
-			      4		; Serial
+@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. (
+			      5		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
