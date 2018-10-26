@@ -2,13 +2,20 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	localhost. root.localhost. (
-			      2		; Serial
+@	IN	SOA	lennert-verwimp.sb.uclllabs.be. root.lennert-verwimp.sb.uclllabs.be. (
+			      4		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-@	IN	NS	localhost.
-@	IN	A	127.0.0.1
-@	IN	AAAA	::1
+	IN	NS	ns.lennert-verwimp.sb.uclllabs.be.
+	IN      NS      ns1.uclllabs.be.
+	IN      NS      ns2.uclllabs.be.
+
+ns	IN	A	193.191.177.217
+
+@	IN	A	193.191.177.217
+www	IN	A	193.191.177.217
+test	IN	A	193.191.177.254
+
