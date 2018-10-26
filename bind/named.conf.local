@@ -2,6 +2,22 @@
 // Do any local configuration here
 //
 
+zone "lennert-verwimp.sb.uclllabs.be" {
+    type master;
+    file "/etc/bind/db.lennert-verwimp.sb.uclllabs.be";
+    notify yes;
+	allow-transfer{
+	//mrt
+	193.191.177.6;	
+	//ns1
+	193.191.176.254;
+	//ns2
+	193.191.177.4;	
+	}
+};
+
+
+
 // Consider adding the 1918 zones here, if they are not used in your
 // organization
 //include "/etc/bind/zones.rfc1918";
