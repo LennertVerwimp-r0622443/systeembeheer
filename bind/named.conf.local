@@ -8,12 +8,12 @@ zone "lennert-verwimp.sb.uclllabs.be" {
     notify yes;
 	allow-transfer{
 	//mrt
-	193.191.177.6;	
+	193.191.177.254;	
 	//ns1
 	193.191.176.254;
 	//ns2
 	193.191.177.4;	
-	}
+	};
 };
 
 
