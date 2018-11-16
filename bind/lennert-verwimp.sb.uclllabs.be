@@ -3,7 +3,7 @@
 ;
 $TTL	604800
 @	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. (
-			      8		; Serial
+			      9		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -16,5 +16,6 @@ $TTL	604800
 ns	IN	A	193.191.177.217
 @	IN	A	193.191.177.217
 www	IN	A	193.191.177.217
+www1	IN	CNAME	www
+www2    IN      CNAME	www
 test	IN	A	193.191.177.254
-
