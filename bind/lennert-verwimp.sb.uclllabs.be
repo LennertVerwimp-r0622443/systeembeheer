@@ -19,3 +19,5 @@ www	IN	A	193.191.177.217
 www1	IN	CNAME	www
 www2    IN      CNAME	www
 test	IN	A	193.191.177.254
+secure	IN	A	193.191.177.217
+supersecure IN	A	193.191.177.217
