@@ -13,11 +13,12 @@ $TTL	604800
 	IN      NS      ns1.uclllabs.be.
 	IN      NS      ns2.uclllabs.be.
 
-ns	IN	A	193.191.177.217
-@	IN	A	193.191.177.217
-www	IN	A	193.191.177.217
-www1	IN	CNAME	www
-www2    IN      CNAME	www
-test	IN	A	193.191.177.254
-secure	IN	A	193.191.177.217
-supersecure IN	A	193.191.177.217
+ns		IN	A	193.191.177.217
+@		IN	A	193.191.177.217
+www		IN	A	193.191.177.217
+www1		IN	CNAME	www
+www2		IN      CNAME	www
+test		IN	A	193.191.177.254
+secure		IN	A	193.191.177.217
+supersecure	IN	A	193.191.177.217
+@		IN	CAA	0 issue "letsencrypt.org"
