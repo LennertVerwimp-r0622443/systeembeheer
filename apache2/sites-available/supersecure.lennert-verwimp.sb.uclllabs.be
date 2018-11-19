@@ -5,5 +5,6 @@
     DocumentRoot /var/www/supersecure.lennert-verwimp.sb.uclllabs.be
     ErrorLog /var/www/supersecure_error.log
     CustomLog /var/www/supersecure.lennert-verwimp.sb.uclllabs.be/requests.log combined
+    Redirect permanent / https://secure.lennert-verwimp.sb.uclllabs.be/
 </VirtualHost>
 
