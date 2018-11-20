@@ -1,0 +1,1 @@
+*/2 * * * * /usr/bin/php /etc/dbmax.php
