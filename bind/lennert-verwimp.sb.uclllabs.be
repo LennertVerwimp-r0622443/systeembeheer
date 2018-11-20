@@ -21,4 +21,7 @@ www2		IN      CNAME	www
 test		IN	A	193.191.177.254
 secure		IN	A	193.191.177.217
 supersecure	IN	A	193.191.177.217
+mx		IN	A	193.191.177.217
 @		IN	CAA	0 issue "letsencrypt.org"
+@		IN	MX	10	mx.lennert-verwimp.sb.uclllabs.be.
+@		IN	CAA	0 iodef "mailto:lennert.verwimp@hotmail.com"
