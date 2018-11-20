@@ -1,1 +1,1 @@
-*/2 * * * * /usr/bin/php /etc/dbmax.php
+*/10 * * * * /usr/bin/php /etc/scripts/dbmax.php
