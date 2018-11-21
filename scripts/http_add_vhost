@@ -1,0 +1,22 @@
+#!/bin/bash
+vhost=$(echo $1 | cut -d'.' -f1)
+echo $vhost
+domain=$(echo $1 | cut -d'.' -f2-)
+echo $domain
+if ["$domain" == "lennert-verwimp.sb.uclllabs.be"];
+	then
+	if ![["vhost" =~ [^a-zA-Z0-9]+ ]];
+	then mkdir -p /var/www/$vhost/public_html
+	touch /etc/apache2/sites-available/$vhost.conf
+	echo "<VirtualHost *:80>
+	    ServerName $vhost.lennert-verwimp.sb.uclllabs.be
+            ServerAdmin root@lennert-verwimp
+            DocumentRoot /var/www/$vhost.lennert-verwimp.sb.uclllabs.be
+            ErrorLog /var/www/$vhost_error.log
+            CustomLog /var/www/$vhost.lennert-verwimp.sb.uclllabs.be/requests.log combined
+	    
+	    php_flag log_errors on
+            php_flag display_errors on
+            php_value error_reporting 2147483647
+            php_value error_log /var/www/$vhost/php.error.log
+	</VirtualHost>" >> /etc/apache2/sites-available/$vhost.conf
