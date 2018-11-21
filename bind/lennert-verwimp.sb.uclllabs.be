@@ -3,7 +3,7 @@
 ;
 $TTL	604800
 @	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. (
-			     11		; Serial
+			     12		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
