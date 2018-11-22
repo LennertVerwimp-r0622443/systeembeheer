@@ -28,3 +28,4 @@ root	ALL=(ALL:ALL) ALL
 
 check ALL = (ALL) NOPASSWD: /usr/lib/nagios/plugins/check_apt
 check ALL = (ALL) NOPASSWD: /usr/sbin/arp
+check ALL = (ALL) NOPASSWD: /usr/local/bin/

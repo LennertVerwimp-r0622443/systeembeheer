@@ -27,3 +27,8 @@ mx		IN	A	193.191.177.217
 @		IN	CAA	0 iodef "mailto:lennert.verwimp@hotmail.com"
 foobar	IN	NS	ns
 foobar2	IN	NS	ns
+subdomainz IN A 193.191.177.217
+subdomainz1 IN A 193.191.177.217
+subdomainz1 IN A 193.191.177.217
+subdomainz1 IN A 193.191.177.217
+subdomainz2 IN A 193.191.177.217
