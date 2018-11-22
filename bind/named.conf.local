@@ -37,3 +37,18 @@ zone "foobar3.lennert-verwimp.sb.uclllabs.be" {
 	type master;
 	file "/etc/bind/foobar3.lennert-verwimp.sb.uclllabs.be";
 };
+
+zone "xdxp.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/xdxp.lennert-verwimp.sb.uclllabs.be";
+};
+
+zone "mijpls.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/mijpls.lennert-verwimp.sb.uclllabs.be";
+};
+
+zone "groenpls.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/groenpls.lennert-verwimp.sb.uclllabs.be";
+};

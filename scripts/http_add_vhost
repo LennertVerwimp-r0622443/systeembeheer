@@ -1,36 +1,41 @@
 #!/bin/bash
-vhost=$(echo $1 | cut -d'.' -f1)
-echo $vhost
-domain=$(echo $1 | cut -d'.' -f2-)
-echo $domain
-if [ "$domain" == "lennert-verwimp.sb.uclllabs.be" ]; then
-	if ! [[ "$vhost" =~ [^a-zA-Z0-9]+ ]]; then 
-	mkdir -p /var/www/$vhost/public_html
-	touch /etc/apache2/sites-available/$vhost.conf
-	echo "<VirtualHost *:80>
-	    ServerName $vhost.lennert-verwimp.sb.uclllabs.be
-            ServerAdmin root@lennert-verwimp
-            DocumentRoot /var/www/$vhost.lennert-verwimp.sb.uclllabs.be
-            ErrorLog /var/www/$vhost_error.log
-            CustomLog /var/www/$vhost.lennert-verwimp.sb.uclllabs.be/requests.log combined
-	</VirtualHost>" >> /etc/apache2/sites-available/$vhost.conf
 
-	touch /var/www/$vhost/public_html/index.html
-		echo "<html>
-		<head>
-		<title>Vhost $vhost</title>
-		</head>
-		<body>
-		<p>welcome $vhost</p>
-		</body>
-		</html>" >> /var/www/$vhost/public_html/index.html
-
-	dns_add_record -t A $vhost 193.191.177.217 $domain
-	a2ensite $vhost.conf
-	systemctl reload apache2
-	else
-	echo "invalid vhost name"
-	fi
-else
-echo "invalid domain"
+if [ "$EUID" -ne 0 ]; then
+	echo "please run as root"
+	exit
 fi
+
+if [ $# != 1 ]; then
+	echo "usage: http_add_vhost <vhost>"
+	exit 1
+fi
+
+VHOST=$1
+LOG_DIR="/var/log/apache2/$VHOST"
+WWW_DIR="/var/www/$VHOST"
+VHOST_FILE="/etc/apache2/sites-available/$VHOST.conf"
+
+if [ -z "$(dig +short $VHOST)" ]; then
+	echo "domain doesn't exist"
+	exit 1
+fi
+
+if [ -e $VHOST_FILE ]; then
+	echo "vhost already exists"
+	exit 1
+fi
+
+mkdir $WWW_DIR
+
+echo "<VirtualHost *:80>
+	ServerName $VHOST
+	DocumentRoot $WWW_DIR
+	ErrorLog /var/www/$VHOST_error.log
+	CustomLog /var/www/$VHOST_access.log combined
+</VirtualHost>" > $VHOST_FILE
+
+SUBDOMAIN=$(echo $VHOST | grep -oP ".+(?=(\.lennert-verwimp))")
+echo "welcome $SUBDOMAIN" > "$WWW_DIR/index.html"
+
+a2ensite $VHOST > /dev/null
+systemctl reload apache2
