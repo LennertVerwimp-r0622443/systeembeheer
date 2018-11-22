@@ -22,3 +22,13 @@ zone "lennert-verwimp.sb.uclllabs.be" {
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+
+zone "foobar.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/foobar.lennert-verwimp.sb.uclllabs.be";
+};
+
+zone "foobar2.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/foobar2.lennert-verwimp.sb.uclllabs.be";
+};
