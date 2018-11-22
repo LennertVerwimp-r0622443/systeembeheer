@@ -27,8 +27,7 @@ touch /var/www/$vhost/public_html/index.html
 	<title>Vhost $vhost</title>
 	</head>
 	<body>
-	<p>welcome<p>
-	<p>$vhost</>
+	<p>welcome $vhost</p>
 	</body>
 	</html> >> /var/www/$vhost/public_html/index.html
 
