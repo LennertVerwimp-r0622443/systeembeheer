@@ -1,0 +1,43 @@
+#!/bin/bash
+
+ZONE=$1
+PARENT_ZONE="lennert-verwimp.sb.uclllabs.be."
+BIND_DIR="/etc/bind"
+PARENT_ZONE_FILE="$BIND_DIR/${PARENT_ZONE::-1}"
+IP="193.191.177.217"
+
+if [ "$EUID" -ne 0 ]; then
+	echo "please run as root"
+	exit
+fi
+
+if [ $# != 1 ]; then
+	echo "usage: dns_add_zone <zone>"
+	exit 1
+fi
+
+FULL_ZONE="$1.$PARENT_ZONE"
+ZONE_FILE="$BIND_DIR/${FULL_ZONE::-1}"
+
+if [ -e $ZONE_FILE ]; then
+	echo "zone already exists"
+	exit 1
+fi
+
+echo "\$TTL	604800
+@	IN	SOA	ns.$PARENT_ZONE	admin	( 1 604800 86400 2419200 604800 )
+@	IN	NS	ns.$PARENT_ZONE
+@	IN	A	$IP" > $ZONE_FILE
+
+echo "$ZONE	IN	NS	ns" >> $PARENT_ZONE_FILE
+
+VERSION=$(grep -oP "\( \K[[:digit:]]+" $PARENT_ZONE_FILE)
+sed -i "s/( $VERSION/( $((VERSION + 1))/g" $PARENT_ZONE_FILE
+
+echo "
+zone \"${FULL_ZONE::-1}\" {
+	type master;
+	file \"$ZONE_FILE\";
+};" >> "$BIND_DIR/named.conf.local"
+
+rndc reload > /dev/null

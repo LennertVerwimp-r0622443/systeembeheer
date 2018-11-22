@@ -1,0 +1,77 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+    echo "please run as root"
+    exit
+fi
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -t)
+    RECORD_TYPE="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+if [ -z "$RECORD_TYPE" ]; then
+    RECORD_TYPE="A"
+fi
+
+if [ $RECORD_TYPE != "CNAME" ]; then
+    ZONE=$3
+else
+    ZONE=$(echo "$2" | grep -oP "\.\K.+")
+fi
+
+ZONE_FILE="/etc/bind/$ZONE"
+
+if [ ! -e $ZONE_FILE ]; then
+    echo "zone does not exists"
+    exit 1
+fi
+
+case $RECORD_TYPE in
+    A)
+    if [ $# != 3 ]; then
+        echo "expected 3 arguments"
+        exit 1
+    fi
+    RECORD="$1 IN A $2"
+    ;;
+    MX)
+    if [ $# != 3 ]; then
+        echo "expected 3 arguments"
+        exit 1
+    fi
+    RECORD="@ IN MX 0 $1\n$1 IN A $2"
+    ;;
+    CNAME)
+    if [ $# != 2 ]; then
+        echo "expected 2 arguments"
+        exit 1
+    fi
+    RECORD="$1 IN CNAME $2."
+    ;;
+    *)
+    echo "unknown record type"
+    exit 1
+    ;;
+esac
+
+echo -e "$RECORD" >> $ZONE_FILE
+
+VERSION=$(grep -oP "\( \K[[:digit:]]+" $ZONE_FILE)
+sed -i "s/( $VERSION/( $((VERSION + 1))/g" $ZONE_FILE
+
+rndc reload > /dev/null

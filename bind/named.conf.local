@@ -32,3 +32,8 @@ zone "foobar2.lennert-verwimp.sb.uclllabs.be" {
 	type master;
 	file "/etc/bind/foobar2.lennert-verwimp.sb.uclllabs.be";
 };
+
+zone "foobar3.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/foobar3.lennert-verwimp.sb.uclllabs.be";
+};

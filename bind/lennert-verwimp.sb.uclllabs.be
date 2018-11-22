@@ -2,12 +2,7 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. (
-			     12		; Serial
-			 604800		; Refresh
-			  86400		; Retry
-			2419200		; Expire
-			 604800 )	; Negative Cache TTL
+@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. ( 13 604800 86400 2419200 604800 )
 
 	IN	NS	ns.lennert-verwimp.sb.uclllabs.be.
 	IN      NS      ns1.uclllabs.be.
@@ -32,3 +27,4 @@ subdomainz1 IN A 193.191.177.217
 subdomainz1 IN A 193.191.177.217
 subdomainz1 IN A 193.191.177.217
 subdomainz2 IN A 193.191.177.217
+foobar3	IN	NS	ns
