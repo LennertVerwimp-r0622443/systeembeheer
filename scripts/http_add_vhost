@@ -20,3 +20,24 @@ if ["$domain" == "lennert-verwimp.sb.uclllabs.be"];
             php_value error_reporting 2147483647
             php_value error_log /var/www/$vhost/php.error.log
 	</VirtualHost>" >> /etc/apache2/sites-available/$vhost.conf
+
+touch /var/www/$vhost/public_html/index.html
+	echo "<html>
+	<head>
+	<title>Vhost $vhost</title>
+	</head>
+	<body>
+	<p>welcome<p>
+	<p>$vhost</>
+	</body>
+	</html> >> /var/www/$vhost/public_html/index.html
+
+dns_add_record -t A $vhost 193.191.177.134 $domain
+a2ensite $vhost.conf
+systemctl reload apache2
+else
+echo "invalid vhost name"
+fi
+else
+echo "invalid domain
+fi
