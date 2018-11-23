@@ -52,3 +52,18 @@ zone "groenpls.lennert-verwimp.sb.uclllabs.be" {
 	type master;
 	file "/etc/bind/groenpls.lennert-verwimp.sb.uclllabs.be";
 };
+
+zone "subzoneurong0.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/subzoneurong0.lennert-verwimp.sb.uclllabs.be";
+};
+
+zone "brood.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/brood.lennert-verwimp.sb.uclllabs.be";
+};
+
+zone "banaan.lennert-verwimp.sb.uclllabs.be" {
+	type master;
+	file "/etc/bind/banaan.lennert-verwimp.sb.uclllabs.be";
+};

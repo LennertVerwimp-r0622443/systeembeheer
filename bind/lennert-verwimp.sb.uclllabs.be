@@ -2,7 +2,7 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. ( 16 604800 86400 2419200 604800 )
+@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. ( 19 604800 86400 2419200 604800 )
 
 	IN	NS	ns.lennert-verwimp.sb.uclllabs.be.
 	IN      NS      ns1.uclllabs.be.
@@ -31,3 +31,6 @@ foobar3	IN	NS	ns
 xdxp	IN	NS	ns
 mijpls	IN	NS	ns
 groenpls	IN	NS	ns
+subzoneurong0	IN	NS	ns
+brood	IN	NS	ns
+banaan	IN	NS	ns

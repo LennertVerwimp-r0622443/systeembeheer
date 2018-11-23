@@ -8,7 +8,7 @@
 #
 Defaults	env_reset
 Defaults	mail_badpass
-Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/etc/scripts/"
 
 # Host alias specification
 
@@ -28,4 +28,7 @@ root	ALL=(ALL:ALL) ALL
 
 check ALL = (ALL) NOPASSWD: /usr/lib/nagios/plugins/check_apt
 check ALL = (ALL) NOPASSWD: /usr/sbin/arp
-check ALL = (ALL) NOPASSWD: /usr/local/bin/
+check ALL = (ALL) NOPASSWD: /usr/local/bin/http_add_vhost
+check ALL = (ALL) NOPASSWD: /etc/scripts/dns_add_zone
+check ALL = (ALL) NOPASSWD: /etc/scripts/dns_add_record
+check ALL = (ALL) NOPASSWD: /etc/scripts/http_add_vhost
