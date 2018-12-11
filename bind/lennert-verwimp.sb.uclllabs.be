@@ -2,7 +2,7 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. ( 19 604800 86400 2419200 604800 )
+@	IN	SOA	lennert-verwimp.sb.uclllabs.be. admin.lennert-verwimp.sb.uclllabs.be. ( 20 604800 86400 2419200 604800 )
 
 	IN	NS	ns.lennert-verwimp.sb.uclllabs.be.
 	IN      NS      ns1.uclllabs.be.
@@ -17,6 +17,9 @@ test		IN	A	193.191.177.254
 secure		IN	A	193.191.177.217
 supersecure	IN	A	193.191.177.217
 mx		IN	A	193.191.177.217
+mx		IN	AAAA	2001:6a8:2880:a077::d9
+@		IN	AAAA	2001:6a8:2880:a077::d9
+ns		IN	AAAA	2001:6a8:2880:a077::d9
 @		IN	CAA	0 issue "letsencrypt.org"
 @		IN	MX	10	mx.lennert-verwimp.sb.uclllabs.be.
 @		IN	CAA	0 iodef "mailto:lennert.verwimp@hotmail.com"
